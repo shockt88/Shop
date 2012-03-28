@@ -1,0 +1,13 @@
+/*
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+#header { border-bottom: solid 3px red; margin-bottom: 6px; }
+
+#cart { border: solid 1px blue; padding: 4px; }
+
+#header h1 a { text-decoration:none; }
+
+#news { border-bottom: solid 3px #AAA; }

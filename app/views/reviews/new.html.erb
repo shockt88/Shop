@@ -1,0 +1,9 @@
+<% if @review.product.present? %>
+<h1>New review for <%= @review.product.name %></h1>
+<% else %>
+<h1>New Product Review</h1>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', reviews_path %>

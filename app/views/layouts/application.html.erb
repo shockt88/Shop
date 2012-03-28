@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+  <h1><%= link_to "CA Shop", root_url %></h1>
+  
+  <% if session[:user_id].present? %>
+    <p><%= link_to "Sign Out", logout_url %> | 
+        <%= link_to "See My Orders", orders_url %></p>
+  <% else %>
+  <p><%= link_to "Sign up", new_user_url %> | 
+     <%= link_to "Sign in", new_session_url %>
+  </p>
+  <% end %>
+</div>
+
+<div id="news">
+  <h2>Check Out Some New Products!</h2>
+  <ul>
+    <% Product.most_recent.each do |product| %>
+      <li><%= link_to product.name, product_url(product) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<%= render 'shared/cart' %>
+
+<%= yield %>
+
+</body>
+</html>

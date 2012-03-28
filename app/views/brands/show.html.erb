@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @brand.name %></p>
+
+<h3>Products</h3>
+
+<ol>
+  <% @brand.products.each do |product| %>
+    <li><%= link_to product.name, product %></li>
+  <% end %>
+</ol>
+
+<% if administrator? %>
+  <%= link_to 'Edit', edit_brand_path(@brand) %>
+<% end %>
+

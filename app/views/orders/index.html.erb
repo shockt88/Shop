@@ -1,0 +1,15 @@
+<h1>Order History</h1>
+
+<ol>
+  <% @orders.each do |order| %>
+    <li>Order #<%= order.id %> (<%= order.user.name %>)</li>
+    
+    <ul>
+      <% order.order_items.each do |item| %>
+        <li><%= item.product.name %> 
+          <%= number_to_currency item.product.price %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</ol>

@@ -1,0 +1,13 @@
+<h1>Order Details</h1>
+
+<p><strong><%= notice %></strong></p>
+
+<p>Order #<%= @order.id %></p>
+
+<p>Here's what you purchased:</p>
+
+<ol>
+<% @order.order_items.each do |item| %>
+  <li><%= item.product.name %></li>
+<% end %>
+</ol>

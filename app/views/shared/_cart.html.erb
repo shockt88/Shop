@@ -1,0 +1,19 @@
+
+<% if session[:cart_id].present? %>
+<div id="cart">
+  <h3>My Cart</h3>
+  <p>(The cart ID is <%= session[:cart_id] %>)</p>
+  <ul>
+    <% Cart.find(session[:cart_id]).cart_items.each do |item| %>
+      <li><%= item.product.name %>
+          <%= number_to_currency item.product.price %>
+          <%= link_to "Remove", cart_item_url(item), :method =>  :delete %>
+      </li>
+    <% end %>
+  </ul>
+  <p>TOTAL: <%= number_to_currency(Cart.find(session[:cart_id]).total) %></p>
+  
+  <%= button_to "Check Out", orders_url %>
+
+<% end %>
+</div>

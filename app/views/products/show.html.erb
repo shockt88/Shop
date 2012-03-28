@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @product.brand.name %>  <%= @product.name %></h3>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@product.price) %>
+</p>
+
+
+<p>Average Rating: <%= @product.reviews.average("rating") %></p>
+
+<%= button_to "Add To My Cart", cart_items_url(:product_id => @product.id) %>
+
+<p><%= link_to "Review This Product", new_review_url(:product_id => @product.id) %></p>
+<hr/>
+
+<ol>
+<% @product.reviews.each do |review| %>
+  <li><strong>Rating: <%= review.rating %></strong>
+      <p><%= review.description %></p>
+  </li>
+<% end %>
+</ol>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
